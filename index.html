@@ -5,43 +5,359 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fakultas Sains dan Teknologi Informasi ITK</title>
   <link rel="stylesheet" href="./src/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>Fakultas Sains dan Teknologi Informasi</h1>
-      <h2>Institut Teknologi Kalimantan</h2>
-    </header>
+  <div class="loading-screen">
+    <div class="loader"></div>
+    <p>Memuat Fakultas Sains dan Teknologi...</p>
+  </div>
 
-    <div class="content">
-      <div class="info-panel">
-        <div class="info-section">
-          <h3>Tentang Fakultas</h3>
-          <p>Fakultas Sains dan Teknologi Informasi ITK merupakan pusat unggulan pendidikan dan penelitian dalam bidang sains dan teknologi informasi di Indonesia Timur.</p>
-        </div>
-        
-        <div class="info-section">
-          <h3>Program Studi</h3>
-          <ul>
-            <li>Informatika</li>
-            <li>Sistem Informasi</li>
-            <li>Matematika Terapan</li>
-            <li>Fisika Terapan</li>
-          </ul>
-        </div>
-        
-        <div class="info-section">
-          <h3>Visi</h3>
-          <p>Menjadi fakultas terkemuka dalam pengembangan sains dan teknologi informasi untuk mendukung pembangunan berkelanjutan di Indonesia.</p>
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+        <span>FSTI</span>
+        <span class="small">ITK</span>
+      </div>
+      <div class="nav-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#beranda" class="active">Beranda</a></li>
+        <li><a href="#tentang">Tentang</a></li>
+        <li><a href="#prodi">Program Studi</a></li>
+        <li><a href="#galeri">Galeri</a></li>
+        <li><a href="#virtual-tour" class="tour-btn">Virtual Tour</a></li>
+      </ul>
+      <div class="theme-toggle">
+        <i class="fas fa-moon"></i>
+      </div>
+    </div>
+  </nav>
+
+  <div class="modal" id="detail-modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <div class="modal-body">
+        <!-- Content will be dynamically inserted -->
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section id="beranda" class="hero-section">
+      <div class="hero-content">
+        <h1 class="fade-in">Fakultas Sains dan Teknologi Informasi</h1>
+        <h2 class="fade-in">Institut Teknologi Kalimantan</h2>
+        <p class="fade-in">Membentuk Generasi Unggul di Bidang Sains dan Teknologi</p>
+        <div class="hero-buttons fade-in">
+          <button class="btn primary" id="explore-btn">Jelajahi Gedung 3D</button>
+          <button class="btn secondary" id="tour-btn">Virtual Tour</button>
         </div>
       </div>
-      
-      <div id="threejs-container"></div>
+      <div id="threejs-container" class="fade-in"></div>
+    </section>
+
+    <section id="tentang" class="about-section">
+      <div class="section-header">
+        <h2>Tentang Fakultas</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="about-content">
+        <div class="about-image">
+          <div class="about-image-container"></div>
+        </div>
+        <div class="about-text">
+          <h3>Pusat Keunggulan di Indonesia Timur</h3>
+          <p>Fakultas Sains dan Teknologi Informasi ITK merupakan pusat unggulan pendidikan dan penelitian dalam bidang sains dan teknologi informasi di Indonesia Timur. Didirikan pada tahun 2012, fakultas ini telah menghasilkan lulusan berkualitas yang berkontribusi pada pembangunan nasional.</p>
+          
+          <h3>Visi</h3>
+          <p>Menjadi fakultas terkemuka dalam pengembangan sains dan teknologi informasi untuk mendukung pembangunan berkelanjutan di Indonesia.</p>
+          
+          <h3>Misi</h3>
+          <ul>
+            <li>Menyelenggarakan pendidikan berkualitas tinggi di bidang sains dan teknologi informasi</li>
+            <li>Melakukan penelitian inovatif yang relevan dengan kebutuhan masyarakat</li>
+            <li>Mengembangkan kerjasama dengan industri dan institusi akademik</li>
+            <li>Membentuk lulusan yang kompetitif dan beretika</li>
+          </ul>
+          
+          <div class="stats-container">
+            <div class="stat-item">
+              <span class="stat-number" data-count="500">0</span>
+              <span class="stat-label">Mahasiswa Aktif</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-count="40">0</span>
+              <span class="stat-label">Dosen</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-count="4">0</span>
+              <span class="stat-label">Program Studi</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-count="12">0</span>
+              <span class="stat-label">Laboratorium</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="prodi" class="programs-section">
+      <div class="section-header">
+        <h2>Program Studi</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="programs-container">
+        <div class="program-card" data-program="informatika">
+          <div class="program-icon">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <h3>Informatika</h3>
+          <p>Program studi yang fokus pada pengembangan perangkat lunak, kecerdasan buatan, dan analisis data.</p>
+          <button class="btn secondary program-detail-btn">Selengkapnya</button>
+        </div>
+        <div class="program-card" data-program="sistem-informasi">
+          <div class="program-icon">
+            <i class="fas fa-database"></i>
+          </div>
+          <h3>Sistem Informasi</h3>
+          <p>Program studi yang mengintegrasikan teknologi informasi dengan proses bisnis untuk menciptakan solusi.</p>
+          <button class="btn secondary program-detail-btn">Selengkapnya</button>
+        </div>
+        <div class="program-card" data-program="matematika">
+          <div class="program-icon">
+            <i class="fas fa-square-root-alt"></i>
+          </div>
+          <h3>Matematika Terapan</h3>
+          <p>Program studi yang mengaplikasikan teori matematika untuk menyelesaikan permasalahan praktis.</p>
+          <button class="btn secondary program-detail-btn">Selengkapnya</button>
+        </div>
+        <div class="program-card" data-program="fisika">
+          <div class="program-icon">
+            <i class="fas fa-atom"></i>
+          </div>
+          <h3>Fisika Terapan</h3>
+          <p>Program studi yang mendalami fenomena fisika dan aplikasinya dalam berbagai teknologi.</p>
+          <button class="btn secondary program-detail-btn">Selengkapnya</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="timeline" class="timeline-section">
+      <div class="section-header">
+        <h2>Perjalanan Kami</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="timeline-container">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2012</div>
+          <div class="timeline-content">
+            <h3>Pendirian Fakultas</h3>
+            <p>Fakultas Sains dan Teknologi Informasi ITK resmi didirikan sebagai fakultas terdepan di Indonesia Timur.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2015</div>
+          <div class="timeline-content">
+            <h3>Akreditasi Program Studi</h3>
+            <p>Seluruh program studi memperoleh akreditasi dari BAN-PT dengan predikat baik.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2018</div>
+          <div class="timeline-content">
+            <h3>Pembangunan Gedung Baru</h3>
+            <p>Peresmian gedung baru dengan fasilitas laboratorium modern dan ruang kuliah interaktif.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2022</div>
+          <div class="timeline-content">
+            <h3>Kerja Sama Internasional</h3>
+            <p>Menjalin kerja sama dengan berbagai universitas internasional untuk program pertukaran mahasiswa dan penelitian.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2025</div>
+          <div class="timeline-content">
+            <h3>Akreditasi Unggul</h3>
+            <p>Fakultas menerima akreditasi Unggul sebagai pengakuan atas kualitas pendidikan dan penelitian.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="galeri" class="gallery-section">
+      <div class="section-header">
+        <h2>Galeri Fakultas</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="gallery-container">
+        <div class="gallery-item">
+          <div class="gallery-image" style="background-color: #3498db;"></div>
+          <div class="gallery-overlay">
+            <h3>Gedung Utama</h3>
+            <p>Tampak depan gedung Fakultas Sains dan Teknologi Informasi</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-image" style="background-color: #2ecc71;"></div>
+          <div class="gallery-overlay">
+            <h3>Laboratorium AI</h3>
+            <p>Fasilitas penelitian kecerdasan buatan terdepan</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-image" style="background-color: #e74c3c;"></div>
+          <div class="gallery-overlay">
+            <h3>Perpustakaan</h3>
+            <p>Pusat informasi dan koleksi literatur ilmiah</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-image" style="background-color: #f39c12;"></div>
+          <div class="gallery-overlay">
+            <h3>Ruang Kuliah</h3>
+            <p>Ruang pembelajaran interaktif dengan teknologi modern</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-image" style="background-color: #9b59b6;"></div>
+          <div class="gallery-overlay">
+            <h3>Aula Serbaguna</h3>
+            <p>Venue untuk berbagai aktivitas akademik dan non-akademik</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-image" style="background-color: #16a085;"></div>
+          <div class="gallery-overlay">
+            <h3>Taman Fakultas</h3>
+            <p>Area hijau untuk relaksasi dan diskusi informal</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="virtual-tour" class="tour-section">
+      <div class="section-header">
+        <h2>Virtual Tour</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="tour-container">
+        <div class="tour-controls">
+          <button class="btn primary" id="start-tour">Mulai Tour</button>
+          <button class="btn secondary" id="exit-tour">Keluar</button>
+          <div class="tour-instructions">
+            <p>Gunakan tombol <strong>W, A, S, D</strong> untuk bergerak dan <strong>mouse</strong> untuk melihat sekitar</p>
+          </div>
+        </div>
+        <div id="tour-container" class="tour-view"></div>
+      </div>
+    </section>
+
+    <section id="kontak" class="contact-section">
+      <div class="section-header">
+        <h2>Hubungi Kami</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="contact-container">
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <p>Jl. Soekarno-Hatta KM 15, Balikpapan, Kalimantan Timur</p>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <p>+62 542 1234567</p>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <p>fstiitk@example.ac.id</p>
+          </div>
+          <div class="social-media">
+            <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="contact-form">
+          <div class="form-group">
+            <label for="name">Nama</label>
+            <input type="text" id="name" name="name" placeholder="Nama Lengkap">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="email@example.com">
+          </div>
+          <div class="form-group">
+            <label for="subject">Subjek</label>
+            <input type="text" id="subject" name="subject" placeholder="Subjek Pesan">
+          </div>
+          <div class="form-group">
+            <label for="message">Pesan</label>
+            <textarea id="message" name="message" placeholder="Tulis pesan Anda di sini..."></textarea>
+          </div>
+          <button type="submit" class="btn primary">Kirim Pesan</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <div class="footer-logo">
+          <span>FSTI ITK</span>
+        </div>
+        <p>Fakultas Sains dan Teknologi Informasi adalah salah satu fakultas unggulan di Institut Teknologi Kalimantan yang berfokus pada pendidikan dan penelitian di bidang sains dan teknologi informasi.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-link-group">
+          <h3>Navigasi Cepat</h3>
+          <ul>
+            <li><a href="#beranda">Beranda</a></li>
+            <li><a href="#tentang">Tentang</a></li>
+            <li><a href="#prodi">Program Studi</a></li>
+            <li><a href="#galeri">Galeri</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+          </ul>
+        </div>
+        <div class="footer-link-group">
+          <h3>Program Studi</h3>
+          <ul>
+            <li><a href="#prodi">Informatika</a></li>
+            <li><a href="#prodi">Sistem Informasi</a></li>
+            <li><a href="#prodi">Matematika Terapan</a></li>
+            <li><a href="#prodi">Fisika Terapan</a></li>
+          </ul>
+        </div>
+        <div class="footer-link-group">
+          <h3>Sumber Daya</h3>
+          <ul>
+            <li><a href="#">Portal Akademik</a></li>
+            <li><a href="#">Perpustakaan Digital</a></li>
+            <li><a href="#">Penelitian</a></li>
+            <li><a href="#">Pusat Karir</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
-    
-    <footer>
+    <div class="footer-bottom">
       <p>&copy; 2025 Fakultas Sains dan Teknologi Informasi - Institut Teknologi Kalimantan</p>
-    </footer>
+      <p>Dibuat dengan <i class="fas fa-heart"></i> & Three.js</p>
+    </div>
+  </footer>
+
+  <div class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
   </div>
   
   <script type="module" src="./src/main.js"></script>
